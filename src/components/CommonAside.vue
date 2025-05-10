@@ -1,6 +1,6 @@
 <template>
     <el-aside :width="width" class="fade-width aside-container">
-        <el-menu background-color="#545c64" text-color="#fff" :collapse="isCollapse">
+        <el-menu background-color=" #278d89" text-color="#fff" :collapse="isCollapse" :collapse-transition="false">
             <div class="logo-text fade-width">
                 {{ isCollapse ? '花木城' : '花圃后台管理系统' }}
             </div>
@@ -115,17 +115,11 @@ const width = computed(() => isCollapse.value ? '64px' : '180px')
 //取消格子线
 .el-menu {
     border-right: none;
-
-    h3 {
-        line-height: 48px;
-        color: #fff;
-        text-align: center;
-    }
 }
 
 .el-aside {
     height: 100%;
-    background-color: #545c64;
+    background-color: #278d89;
 }
 
 .aside-container {
