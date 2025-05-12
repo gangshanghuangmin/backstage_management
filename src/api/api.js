@@ -4,9 +4,20 @@ export default{
     //请求首页左侧的表格的数据
         getTableData(){
         return requests({
-            url:"/api/home/getTableData",
+            //动态的mock地址
+            url:"/home/getTableData",
             method:"get",
+            // mock:true,
         });
 
     },
+
+    //请求首页表格的数据
+    getCountData(){
+        return requests({
+            url:"/home/getCountData",
+            method:"get",
+            // mock:true,
+        });
+    }
 };

@@ -25,14 +25,24 @@
 
 
         </el-col>
+        <el-col :span="16" style="margin-top: 20px">
+            <el-card :body-style="{ display: 'flex', padding: 0 }" v-for="item in countData" :key="item.name">
+                <component :is="item.icon" class="icons" :style="{ background: item, color }"></component>
+                <div class="detail">
+                    <p class="num">￥{{item.value}}</p>
+                    <p class="txt">￥{{item.name}}</p>
+                </div>
+            </el-card>
+        </el-col>
     </el-row>
 </template>
 
 <script setup>
-import { ref,getCurrentInstance,onMounted } from 'vue';
+import { el } from 'element-plus/es/locales.mjs';
+import { ref, getCurrentInstance, onMounted } from 'vue';
 
 
-const {proxy} = getCurrentInstance();
+const { proxy } = getCurrentInstance();
 
 const getImageUrl = (user) => {
     return new URL(`../assets/images/${user}.png`, import.meta.url).href
@@ -40,27 +50,32 @@ const getImageUrl = (user) => {
 //数据：等会使用axios请求mock数据
 
 const tableData = ref([
-    {
-        name: "玉兰花",
-        todayBuy: 20,
-        monthBuy: 500,
-        totalBuy: 1006,
-    },
 
 ])
+const countData = ref([])
 const tableLabel = ref({
     name: "花名",
     todayBuy: "今日销售",
     monthBuy: "本月销售",
     totalBuy: "总销售",
 })
-const getTableDate=async () => {
+const getTableData = async () => {
     const data = await proxy.$api.getTableData();
     tableData.value = data.tableData;
-    
 }
+
+const getCountData = async () => {
+    const data = await proxy.$api.getCountData();
+    countData.value = data;
+
+
+}
+
+
+
 onMounted(() => {
-    getTableDate();
+    getTableData()
+    getCountData()
 })
 
 
@@ -112,7 +127,8 @@ onMounted(() => {
             }
         }
     }
-    .user-table{
+
+    .user-table {
         margin-top: 20px;
     }
 }
