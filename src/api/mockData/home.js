@@ -21,7 +21,7 @@ export default {
             data: [
                 {
                     name: "今日支付订单",
-                    value: 1234,
+                    value: 1886,
                     icon: "SuccessFilled",
                     color: "#2ec7c9",
                 },
@@ -33,13 +33,13 @@ export default {
                 },
                 {
                     name: "今日未支付订单",
-                    value: 1234,
+                    value: 524,
                     icon: "GoodsFilled",
-                    color: "#Sablef",
+                    color: "#0873d7",
                 },
                 {
                     name: "本月支付订单",
-                    value: 1234,
+                    value: 863,
                     icon: "SuccessFilled",
                     color: "#2ec7c9",
                 },
@@ -51,26 +51,111 @@ export default {
                 },
                 {
                     name: "本月未支付订单",
-                    value: 1234,
-                    icon: "SuccessFilled",
-                    color: "#2ec7c9",
-                },
-                {
-                    name: "本月收藏订单",
-                    value: 210,
-                    icon: "StarFilled",
-                    color: "#ffb980",
-                },
-                {
-                    name: "本月未支付订单",
-                    value: 1234,
+                    value: 573,
                     icon: "GoodsFilled",
-                    color: "#5ablef",
+                    color: "#0873d7",
                 },
             ],
 
         };
-    }
+    },
 
+    getChartData: () => {
+        return {
+            code: 200,
+            data: {
+                orderData: {
+                    date: [
+                        "2025-04-24",
+                        "2025-04-25",
+                        "2025-04-26",
+                        "2025-04-27",
+                        "2025-04-28",
+                        "2025-04-29",
+                        "2025-04-30",
+                    ],
+                    data: [
+                        {
+                            虞美人: 420,
+                            蒲公英: 156,
+                            向日葵: 269,
+                            玫瑰: 364,
+                            康乃馨: 467,
+                            兰花: 632,
 
+                        },
+                        {
+                            虞美人: 160,
+                            蒲公英: 136,
+                            向日葵: 349,
+                            玫瑰: 564,
+                            康乃馨: 367,
+                            兰花: 639,
+
+                        },
+                        {
+                            虞美人: 560,
+                            蒲公英: 436,
+                            向日葵: 599,
+                            玫瑰: 756,
+                            康乃馨: 560,
+                            兰花: 196,
+
+                        },
+                        {
+                            虞美人: 558,
+                            蒲公英: 469,
+                            向日葵: 685,
+                            玫瑰: 469,
+                            康乃馨: 279,
+                            兰花: 597,
+                        },
+                        {
+                            虞美人: 468,
+                            蒲公英: 789,
+                            向日葵: 295,
+                            玫瑰: 467,
+                            康乃馨: 799,
+                            兰花: 427,
+                        },
+                        {
+                           虞美人: 398,
+                            蒲公英: 489,
+                            向日葵: 695,
+                            玫瑰: 577,
+                            康乃馨: 99,
+                            兰花: 366,
+                        },
+                        {
+                           虞美人: 168,
+                            蒲公英: 579,
+                            向日葵:46,
+                            玫瑰: 367,
+                            康乃馨: 267,
+                            兰花: 435,
+                        },
+
+                    ],
+
+                },
+                videoData:[
+                    {name:"虞美人",value:168},
+                    {name:"蒲公英",value:579},
+                    {name:"向日葵",value:46},
+                    {name:"玫瑰",value:367},
+                    {name:"康乃馨",value:267},
+                    {name:"兰花",value:435},
+                ],
+                userData:[
+                    {date:"周一",new:5,active:200},
+                    {date:"周二",new:20,active:100},
+                    {date:"周三",new:36,active:300},
+                    {date:"周四",new:10,active:400},
+                    {date:"周五",new:60,active:500},
+                    {date:"周六",new:100,active:600},
+                    {date:"周日",new:100,active:700},
+                ],
+            },
+        };
+    },
 }

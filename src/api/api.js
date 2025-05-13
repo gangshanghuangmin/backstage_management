@@ -19,5 +19,14 @@ export default{
             method:"get",
             // mock:true,
         });
+    },
+
+       //请求首页echarts的数据
+    getChartData(){
+        return requests({
+            url:"/home/getChartData",
+            method:"get",
+            // mock:true,
+        });
     }
 };

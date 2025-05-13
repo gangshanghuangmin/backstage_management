@@ -26,13 +26,16 @@
 
         </el-col>
         <el-col :span="16" style="margin-top: 20px">
-            <el-card :body-style="{ display: 'flex', padding: 0 }" v-for="item in countData" :key="item.name">
-                <component :is="item.icon" class="icons" :style="{ background: item, color }"></component>
-                <div class="detail">
-                    <p class="num">￥{{item.value}}</p>
-                    <p class="txt">￥{{item.name}}</p>
-                </div>
-            </el-card>
+            <div class="num">
+                <el-card :body-style="{ display: 'flex', padding: 0 }" v-for="item in countData" :key="item.name">
+                    <component :is="item.icon" class="icons" :style="{ background: item.color }">
+                    </component>
+                    <div class="detail">
+                        <p class="num">￥{{ item.value }}</p>
+                        <p class="txt">￥{{ item.name }}</p>
+                    </div>
+                </el-card>
+            </div>
         </el-col>
     </el-row>
 </template>
@@ -49,10 +52,12 @@ const getImageUrl = (user) => {
 }
 //数据：等会使用axios请求mock数据
 
-const tableData = ref([
-
-])
+const tableData = ref([])
 const countData = ref([])
+const chartData = ref({})
+
+
+
 const tableLabel = ref({
     name: "花名",
     todayBuy: "今日销售",
@@ -67,15 +72,21 @@ const getTableData = async () => {
 const getCountData = async () => {
     const data = await proxy.$api.getCountData();
     countData.value = data;
-
-
 }
+
+const getChartData = async () => {
+    const data = await proxy.$api.getChartData();
+    console.log(data);
+    chartData.value = data;
+}
+
 
 
 
 onMounted(() => {
     getTableData()
     getCountData()
+    getChartData()
 })
 
 
@@ -130,6 +141,53 @@ onMounted(() => {
 
     .user-table {
         margin-top: 20px;
+    }
+
+.num {
+        // height: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .el-card {
+            height: 60px;
+            width: 32%;
+            margin-bottom: 20px;
+
+            .icons {
+                height: 100%;
+                width: 60px;
+                font-size: 30px;
+                text-align: center;
+                line-height: 40px;
+                color: #fff;
+            }
+
+            .detail {
+                margin-left: 1px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                .num {
+                    margin-left: 10px;
+                    font-size: 25px;
+                    line-height: 15px;
+                    margin-top: 6px;
+                }
+
+                .txt {
+                    margin-left: 10px;
+                    font-size: 15px;
+                    line-height: 0;
+                    margin-top: 0;
+                    text-align: center;
+                    color: #999;
+                }
+            }
+        }
+
+
     }
 }
 </style>
