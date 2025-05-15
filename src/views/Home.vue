@@ -43,7 +43,7 @@
             </el-card>
             <div class="graph" style="height: 220px">
                 <el-card>
-                    <div ref="userEchart" style="height: 180px"></div>
+                    <div ref="userEchart" style="height: 200px"></div>
                 </el-card>
                 <el-card >
                     <div ref="videoEchart" style="height: 180px"></div>

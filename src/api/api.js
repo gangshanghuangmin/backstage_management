@@ -7,7 +7,7 @@ export default{
             //动态的mock地址
             url:"/home/getTableData",
             method:"get",
-            // mock:true,
+            mock:true,
         });
 
     },
@@ -17,7 +17,7 @@ export default{
         return requests({
             url:"/home/getCountData",
             method:"get",
-            // mock:true,
+            mock:true,
         });
     },
 
@@ -26,7 +26,18 @@ export default{
         return requests({
             url:"/home/getChartData",
             method:"get",
-            // mock:true,
+            mock:true,
+        });
+    },
+
+    
+      //User.vue中的表格数据获取
+    getUserData(data){
+        return requests({
+            url:"/user/getUserList",
+            method:"get",
+            mock:true,
+            data,
         });
     }
 };
