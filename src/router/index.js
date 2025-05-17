@@ -14,10 +14,9 @@ const routes = [
                 //路径的匹配
                 component: () => import('@/views/Home.vue'),
             },
-              {
+            {
                 path: "user",
                 name: 'user',
-                //路径的匹配
                 component: () => import('@/views/User.vue'),
             },
         ],

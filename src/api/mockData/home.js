@@ -51,42 +51,42 @@ export default {
             code: 200,
             success: true,
             data: [
-                {
-                    name: "今日支付订单",
-                    value: 1886,
-                    icon: "SuccessFilled",
-                    color: "#2ec7c9",
-                },
-                {
-                    name: "今日收藏订单",
-                    value: 150,
-                    icon: "StarFilled",
-                    color: "#ffb980",
-                },
-                {
-                    name: "今日未支付订单",
-                    value: 524,
-                    icon: "GoodsFilled",
-                    color: "#0873d7",
-                },
-                {
-                    name: "本月支付订单",
-                    value: 863,
-                    icon: "SuccessFilled",
-                    color: "#2ec7c9",
-                },
-                {
-                    name: "本月收藏订单",
-                    value: 369,
-                    icon: "StarFilled",
-                    color: "#ffb980",
-                },
-                {
-                    name: "本月未支付订单",
-                    value: 263,
-                    icon: "GoodsFilled",
-                    color: "#0873d7",
-                },
+                // {
+                //     name: "今日支付订单",
+                //     value: 1886,
+                //     icon: "SuccessFilled",
+                //     color: "#2ec7c9",
+                // },
+                // {
+                //     name: "今日收藏订单",
+                //     value: 150,
+                //     icon: "StarFilled",
+                //     color: "#ffb980",
+                // },
+                // {
+                //     name: "今日未支付订单",
+                //     value: 524,
+                //     icon: "GoodsFilled",
+                //     color: "#0873d7",
+                // },
+                // {
+                //     name: "本月支付订单",
+                //     value: 863,
+                //     icon: "SuccessFilled",
+                //     color: "#2ec7c9",
+                // },
+                // {
+                //     name: "本月收藏订单",
+                //     value: 369,
+                //     icon: "StarFilled",
+                //     color: "#ffb980",
+                // },
+                // {
+                //     name: "本月未支付订单",
+                //     value: 263,
+                //     icon: "GoodsFilled",
+                //     color: "#0873d7",
+                // },
             ],
 
         };

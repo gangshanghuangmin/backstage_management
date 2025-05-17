@@ -1,0 +1,52 @@
+<el-dialog v-model="dialogVisible" :title="action == 'add' ? '新增用户' : '编辑用户'" width="35%" :before-close="handleClose">
+    <el-form :inline="true" :model="formUser" :rules="rules" ref="userForm">
+        <el-row>
+            <el-col :span="12">
+                <el-form-item label="姓名" prop="name">
+                    <el-input v-model="formUser.name" placeholder="请输入姓名" />
+                </el-form-item>
+            </el-col>
+            <el-col :span="12">
+                <el-form-item label="出生日期" prop="birth">
+                    <el-input v-model="formUser.birth" placeholder="请输入出生日期" />
+                </el-form-item>
+            </el-col>
+        </el-row>
+
+        <el-row>
+            <el-col :span="12">
+                <el-form-item class="select-clearn" label="性别" prop="sex">
+                    <el-select v-model="formUser.sex" placeholder="请选择">
+                        <el-option label="男" value="1" />
+                        <el-option label="女" value="0" />
+                    </el-select>
+                </el-form-item>
+            </el-col>
+            <el-col :span="12">
+                <el-form-item label="手机号" prop="information">
+                    <el-input v-model="formUser.information" placeholder="请输入手机号" />
+                </el-form-item>
+            </el-col>
+
+            <el-col :span="12">
+                <el-form-item label="地址" prop="addr">
+                    <el-input v-model="formUser.addr" placeholder="请输入地址" />
+                </el-form-item>
+            </el-col>
+
+            <el-col :span="12">
+                <el-form-item label="职位" prop="position">
+                    <el-input v-model="formUser.position" placeholder="请输入职位" />
+                </el-form-item>
+            </el-col>
+
+            <el-row>
+                <el-row style="justify-content: flex-end">
+                    <el-form-item>
+                        <el-button type="primary" @click="handleCancel">取消</el-button>
+                        <el-button type="primary" @click="onSubmit">确定</el-button>
+                    </el-form-item>
+                </el-row>
+            </el-row>
+    </el-form>
+</el-dialog>

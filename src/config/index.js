@@ -20,5 +20,5 @@ const EnvConfig = {
 export default {
     env,//与环境开发相关
     ...EnvConfig[env],
-    mock: false,
+    mock: true,
 }
