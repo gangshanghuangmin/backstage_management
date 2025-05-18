@@ -94,3 +94,21 @@ export default {
 
 };
 
+//编辑：
+updateUser: config => {
+}
+const { id, name, birth, addr, information, position, sex } = JSON.parse(config.body);
+
+const sex_num = parseInt(sex);
+List.some(u => {
+    if (u.id === id) {
+        u.name = name;
+        u.birth = birth;
+        u.addr = addr;
+        u.information = information;
+        u.position = position;
+        u.sex = sex_num;
+        return true;
+    }
+})
+return { code: 200, data: { message: '编辑成功' } };

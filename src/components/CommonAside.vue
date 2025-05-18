@@ -1,10 +1,10 @@
 <template>
     <el-aside :width="width" class="fade-width aside-container">
-        <el-menu background-color=" #278d89" text-color="#fff" :collapse="isCollapse" :collapse-transition="false">
+        <el-menu background-color=" #278d89" text-color="#fff" :collapse="isCollapse" :collapse-transition="false" :default-active="activeMenu">
             <div class="logo-text fade-width">
                 {{ isCollapse ? '花木城' : '花圃后台管理系统' }}
             </div>
-            <el-menu-item v-for="item in noChildren" :index="item.path" :key="item.path">
+            <el-menu-item v-for="item in noChildren" :index="item.path" :key="item.path"  @click="handleMenu(item)">
                 <component class="icons" :is="item.icon"></component>
                 <span>{{ item.label }}</span>
             </el-menu-item>
@@ -16,7 +16,10 @@
                 </template>
                 <el-menu-item-group>
                     <el-menu-item v-for="(subItem, subIndex) in item.children" :index="subItem.path"
-                        :key="subItem.path">
+                        :key="subItem.path"
+                         @click="handleMenu(subItem)"
+                        >
+                        
                         <component class="icons" :is="subItem.icon"></component>
                         <span>{{ subItem.label }}</span>
                     </el-menu-item>
@@ -31,6 +34,7 @@
 import { ref, computed } from 'vue';
 import { House } from '@element-plus/icons-vue'
 import { useAllDataStore } from '@/stores'
+import { useRouter,useRoute } from 'vue-router';    
 
 
 const list = ref([
@@ -93,7 +97,14 @@ const list = ref([
     }
 ])
 
+
+
+
 //左侧导航栏菜单
+
+//左侧菜单联动
+
+
 const noChildren = computed(() => list.value.filter(item => !item.children))
 const hasChildren = computed(() => list.value.filter(item => item.children))
 //pinia设计导航栏收缩
@@ -102,6 +113,19 @@ const isCollapse = computed(() => store.state.isCollapse)
 
 //设置动态宽度：width
 const width = computed(() => isCollapse.value ? '64px' : '180px')
+
+
+
+const router = useRouter()
+const route = useRoute()
+
+const activeMenu = computed(() =>route.path )
+//实现tag中的方法
+const handleMenu = (item) => {
+   router.push(item.path)
+   store.selectMenu(item)
+}   
+
 
 </script>
 

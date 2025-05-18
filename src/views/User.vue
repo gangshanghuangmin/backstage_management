@@ -1,6 +1,6 @@
 <script setup>
 import { id, ta } from 'element-plus/es/locales.mjs'
-import { ref, getCurrentInstance, onMounted, reactive } from 'vue'
+import { ref, getCurrentInstance, onMounted, reactive,nextTick } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 const handleClick = () => {
     console.log('click')
@@ -13,14 +13,14 @@ const getUserData = async () => {
     console.log(data)
     tableData.value = data.list.map(item => ({
         ...item,
-        sexLabel: item.sex === 1 ? '男' : '女'
+        sexLabel: item.sex === '1' ? '男' : '女'
     }))
     config.total = data.count
 }
 
 const tableLabel = reactive([
     { prop: 'name', label: '姓名' },
-    { prop: 'addr', label: '地址', width: 400 },
+    { prop: 'addr', label: '地址', width: 300 },
     { prop: 'birth', label: '出生日期', width: 200 },
     { prop: 'information', label: '联系电话', width: 200 },
     { prop: 'position', label: '职位', width: 200 },
@@ -108,10 +108,12 @@ const rules = reactive({
 const handleClose = () => {
     //获取表单重置表单
     dialogVisible.value = false;
+    proxy.$refs['userForm'].resetFields()
 }
 //对话框取消
 const handleCancel = () => {
     dialogVisible.value = false
+     proxy.$refs['userForm'].resetFields()
 }
 
 const handleAdd = () => {
@@ -136,6 +138,8 @@ const onSubmit = () => {
             if (action.value === 'add') {
                 res = await proxy.$api.addUser(formUser)
 
+            }else{
+                res = await proxy.$api.editUser(formUser)
             }
             if (res) {
                 dialogVisible.value = false
@@ -151,6 +155,16 @@ const onSubmit = () => {
             }
         }
     })
+}
+
+//编辑
+const handleEdit = () =>{
+    action.value = 'edit'
+    dialogVisible.value = true
+    nextTick(() => {    
+        Object.addign(formUser,{...val,sex:''+val.sex})
+})
+    //
 }
 
 onMounted(() => {
@@ -176,7 +190,7 @@ onMounted(() => {
                 :prop="item.prop" :label="item.label" />
             <el-table-column fixed="right" label="Operations" min-width="120">
                 <template #="scope">
-                    <el-button type="primary" size="small" @click="handleClick">
+                    <el-button type="primary" size="small" @click="handleEdit(scope.row)">
                         编辑
                     </el-button>
                     <el-button type="primary" size="small" @click="handleDelete(scope.row)">删除</el-button>

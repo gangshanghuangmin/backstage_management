@@ -9,16 +9,20 @@ const routes = [
         redirect: '/home',
         children: [
             {
-                path: "home",
+                path: '/home',
                 name: 'home',
-                //路径的匹配
                 component: () => import('@/views/Home.vue'),
             },
             {
-                path: "user",
+                path: '/user',
                 name: 'user',
                 component: () => import('@/views/User.vue'),
             },
+            {
+                path: '/mall',
+                name: 'mall',
+                component: () => import('@/views/Mall.vue'),
+            }
         ],
     },
 ];

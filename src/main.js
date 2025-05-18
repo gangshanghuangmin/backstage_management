@@ -19,6 +19,7 @@ const app = createApp(App);
 app.config.globalProperties.$api = api;
 app.use(ElementPlus)
 app.use(pinia);
+
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
